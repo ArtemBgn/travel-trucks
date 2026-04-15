@@ -1,0 +1,20 @@
+.header {
+  background-color: var(--color-inputs);
+  border-bottom: var(--border-bottom);
+}
+.header-container {
+  display: flex;
+  flex-direction: row;
+}
+.logo {
+  display: inline-block;
+  margin-right: 450px;
+  padding: 28px 0;
+}
+.navigation {
+  margin-right: auto;
+}
+.navigation-list {
+  display: flex;
+  gap: 32px;
+}

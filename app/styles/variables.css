@@ -1,0 +1,42 @@
+:root {
+  /*colors*/
+  --color-green-hover: #6d7b75;
+  --color-grey-green: #829b91;
+  --color-badges: #f2f4f7;
+  --color-inputs: #f7f7f7;
+  --color-rating: #ffc531;
+  --color-grey: #6c717b;
+  --color-white: #ffffff;
+  --color-text: #475467;
+  --color-main: #101828;
+  --color-grey-light: #dadde1;
+
+  /*border*/
+  --border-gray: 1px solid var(--color-grey);
+  --border-bottom: 1px solid var(--color-badges);
+
+  /*typography*/
+  --font-family: 'Inter', sans-serif;
+
+  /*size*/
+  --font-size-regular: 16px; /*for p*/
+  --font-size-semi: 20px; /*for h3*/
+  --font-size-bold: 24px; /*for h2*/
+  --font-size-extra: 48px; /*for h1*/
+
+  /*weight*/
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600; /*for h1, h2, h3*/
+
+  /*line-height*/
+  --line-height-regular: 24px; /*for h3, p*/
+  --line-height-bold: 32px; /*for h1, h2*/
+
+  /*letter-spacing*/
+  --letter-spacing: normal;
+
+  /*animations*/
+  --transition-base: 250ms ease-in-out;
+  --transition-my: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,0 +1,24 @@
+.hero {
+  padding: 192px 0;
+  background-color: var(--color-inputs);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.2)), url(../../public/hero-image.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 696px;
+}
+.hero-container {
+  /* padding-top: 192px; */
+}
+.title-container {
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+.hero-title {
+  color: var(--color-inputs);
+  margin-bottom: 16px;
+}
+.hero-massage {
+  color: var(--color-inputs);
+}

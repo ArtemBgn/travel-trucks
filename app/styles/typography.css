@@ -1,0 +1,51 @@
+body {
+  font-family: var(--font-family);
+  letter-spacing: var(--letter-spacing);
+  color: var(--color-main);
+}
+
+h1 {
+  font-size: var(--font-size-extra);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-bold);
+  color: var(--color-inputs);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-weight-bold);
+}
+
+h2 {
+  font-size: var(--font-size-bold);
+  line-height: var(--line-height-bold);
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-semi);
+  line-height: var(--line-height-regular);
+}
+
+p {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+}
+
+a {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+  transition: color var(--transition-my);
+}
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: var(--color-grey-green);
+  }
+}
