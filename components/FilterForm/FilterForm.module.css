@@ -1,0 +1,121 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+.firstClass {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 20px;
+  padding: 24px;
+  background-color: var(--color-inputs);
+}
+.fieldset {
+  border: none;
+  margin: 0 0 24px 0;
+  padding: 0;
+  width: 100%;
+}
+.legend-name {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+  color: var(--color-grey);
+  margin-bottom: 8px;
+}
+.location-for-blockicon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.location-map-icon {
+  position: absolute;
+  font-size: 20px;
+  left: 20px;
+  color: var(--color-grey);
+  pointer-events: none;
+}
+.location-input {
+  width: 100%;
+  padding: 18px 20px 18px 48px;
+  border-radius: 12px;
+  border: 0px solid var(--color-white);
+  outline: none;
+  background-color: var(--color-white);
+}
+.location-for-blockicon:has(.location-input:not(:placeholder-shown)) {
+  .location-input {
+    border: 1px solid var(--color-inputs);
+  }
+  .location-map-icon {
+    color: var(--color-main);
+  }
+}
+.title-filters {
+  margin-top: 40px;
+  margin-bottom: 24px;
+}
+.radio-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.legend-radio-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: capitalize;
+}
+.borderGrey {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  width: 24px;
+  border: 1px solid var(--color-grey);
+  border-radius: 50%;
+}
+.inCircleColorMane {
+  display: none;
+  height: 14px;
+  width: 14px;
+  background-color: var(--color-main); /**/
+  border-radius: 50%;
+}
+.legend-radio-name:has(input:checked) {
+  .borderGrey {
+    border: 2px solid var(--color-main);
+  }
+}
+.legend-radio-name:has(input:checked) {
+  .inCircleColorMane {
+    display: block;
+  }
+}
+.button-block {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.button-outh-color {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-grey-light);
+  padding: 16px 32px;
+  color: var(--color-main);
+}
+.button-outh-color:hover {
+  border-color: var(--color-green-hover);
+  background-color: transparent;
+}
+.size-icon-inbtn {
+  font-size: 24px;
+}

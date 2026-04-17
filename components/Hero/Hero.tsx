@@ -9,6 +9,7 @@ import {
   postCamperBooking,
 } from '@/lib/api/api';
 import FilterForm from '../FilterForm/FilterForm';
+import BookingForm from '../BookingForm/BookingForm';
 // import Article from '../Article/Article';
 // import { Camper } from '@/lib/types/apiTypes';
 
@@ -76,7 +77,8 @@ function Hero() {
         <Button text="View Now" onClick={handleClick} />
       </div>
       {/* <Article {...tmpC} /> */}
-      <FilterForm />
+      {/* <FilterForm /> */}
+      <BookingForm />
     </section>
   );
 }
