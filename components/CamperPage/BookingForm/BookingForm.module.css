@@ -1,4 +1,7 @@
-.firstClass {
+.block-camper-reservation {
+  padding-top: 56px;
+}
+.form-block {
   width: 100%;
   max-width: 641px;
   border-radius: 16px;

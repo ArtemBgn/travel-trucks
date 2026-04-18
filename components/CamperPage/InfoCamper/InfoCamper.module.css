@@ -1,0 +1,108 @@
+.details-block {
+  width: 100%;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--color-white); /**/
+}
+.block-info {
+  width: 100%;
+  padding: 24px;
+  border-radius: 16px;
+  background-color: var(--color-inputs);
+}
+.header-info {
+  margin-bottom: 24px;
+}
+.title-name {
+  margin-bottom: 8px;
+}
+.header-title-data {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.header-title-rating-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.rating-star {
+  color: var(--color-rating);
+}
+.title-data-text {
+}
+.location-map {
+}
+.title-price {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-bold);
+  line-height: var(--line-height-bold);
+  color: var(--color-main);
+}
+.str-description {
+  /* display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5em;
+  min-height: 7.5em; */
+}
+/*---------------------------------------------------*/
+.data-characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.character-ciclyn {
+  display: flex;
+  gap: 8px;
+  border-radius: 100px;
+  padding: 12px 18px;
+  background-color: var(--color-badges);
+  mix-blend-mode: multiply;
+}
+.character-text {
+  text-transform: capitalize;
+}
+hr.divider {
+  border: none;
+  height: 1px;
+  background-color: var(--color-grey-light);
+  margin: 0;
+  margin-bottom: 16px;
+  display: block;
+  width: 100%;
+}
+.characteristics-block {
+  margin-top: 16px;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 8px;
+}
+.characteristic-str {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.characteristic-key {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+  text-align: center;
+  color: var(--color-main);
+}
+.characteristic-value {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-regular);
+  line-height: var(--line-height-regular);
+  text-align: center;
+  color: var(--color-main);
+}

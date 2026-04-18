@@ -50,6 +50,19 @@ img {
   margin: 0 auto;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+
 /* Enable hover only on non-touch devices */ /*
 @media (hover: hover) and (pointer: fine) {
   a.primary:hover {

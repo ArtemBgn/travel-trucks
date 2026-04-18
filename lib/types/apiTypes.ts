@@ -51,7 +51,7 @@ type Amenities =
   | 'refrigerator'
   | 'microwave'
   | 'water';/**/
-interface GalleryItem {
+export interface GalleryItem {
   id: string;
   camperId: string;
   thumb: string;
@@ -74,12 +74,12 @@ export interface GetCamperResponse {
   consumption: string;
   transmission: string; // возможно заменить типизацию
   engine: string; // возможно заменить типизацию
-  amenities: string; // возможно заменить типизацию
+  amenities: string[];
   gallery: GalleryItem[];
   createdAt: string;
   updatedAt: string;
 }
-interface CamperReview {
+export interface CamperReview {
   id: string;
   camperId: string;
   reviewer_name: string;

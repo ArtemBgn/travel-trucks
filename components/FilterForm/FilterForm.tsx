@@ -76,7 +76,7 @@ function FilterForm() {
                     name="forms"
                     id="forms"
                     value={`${item}`}
-                    className={css['visually-hidden']}
+                    className="visually-hidden"
                   />
                   <span className={css['borderGrey']}>
                     <span className={css['inCircleColorMane']}></span>
@@ -98,7 +98,7 @@ function FilterForm() {
                     name="engines"
                     id="engines"
                     value={`${item}`}
-                    className={css['visually-hidden']}
+                    className="visually-hidden"
                   />
                   <span className={css['borderGrey']}>
                     <span className={css['inCircleColorMane']}></span>
@@ -120,7 +120,7 @@ function FilterForm() {
                     name="transmissions"
                     id="transmissions"
                     value={`${item}`}
-                    className={css['visually-hidden']}
+                    className="visually-hidden"
                   />
                   <span className={css['borderGrey']}>
                     <span className={css['inCircleColorMane']}></span>
