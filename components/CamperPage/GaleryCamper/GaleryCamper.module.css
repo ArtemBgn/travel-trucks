@@ -1,0 +1,65 @@
+/* .gallery-block {
+  width: 100%;
+  max-width: 650px;
+  /* display: flex;
+  flex-direction: column;
+  gap: 16px; 
+  background-color: var(--color-white);
+} */
+
+.gallery-container {
+  width: 100%;
+  max-width: 638px; /* Настройте под свой макет */
+  margin: 0 auto;
+}
+/* Стили большого изображения */
+.main-swiper {
+  --swiper-navigation-color: var(--color-grey-light);
+  /* --swiper-navigation-size: 30px; */
+  width: 100%;
+  height: 505px;
+  border-radius: 17px;
+  margin-bottom: 27px;
+  overflow: hidden;
+}
+.main-swiper img {
+  width: 100%;
+  height: 505px;
+  display: block;
+  object-fit: cover;
+}
+/*----------------------------------------*/
+/* Стили превью */
+:global(.GaleryCamper-module__EcEMEq__thumbs-swiper .swiper-slide) {
+  cursor: pointer;
+  opacity: 0.7;
+  transition:
+    opacity var(--transition-my),
+    border-color var(--transition-my);
+  border-radius: 19px;
+  overflow: hidden;
+  border: 3px solid transparent;
+}
+
+:global(
+  .GaleryCamper-module__EcEMEq__thumbs-swiper .swiper-slide-thumb-active
+) {
+  border-color: var(--color-grey-green);
+  opacity: 1;
+}
+
+:global(.GaleryCamper-module__EcEMEq__thumbs-swiper .swiper-slide:hover) {
+  opacity: 0.8;
+}
+
+.thumb-wrapper {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.thumbs-swiper img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: block;
+  object-fit: cover;
+}

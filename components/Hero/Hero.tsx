@@ -8,7 +8,8 @@ import {
   getFilters,
   postCamperBooking,
 } from '@/lib/api/api';
-import InfoCamper from '../CamperPage/InfoCamper/InfoCamper';
+import GaleryCamper from '../CamperPage/GaleryCamper/GaleryCamper';
+// import InfoCamper from '../CamperPage/InfoCamper/InfoCamper';
 // import { GetCamperResponse } from '@/lib/types/apiTypes';
 // import FilterForm from '../FilterForm/FilterForm';
 // import BookingForm from '../CamperPage/BookingForm/BookingForm';
@@ -48,7 +49,7 @@ import InfoCamper from '../CamperPage/InfoCamper/InfoCamper';
   coverImage:
     'https://ac.goit.global/fullstack/career/campers/britz-4-berth/britz-4-berth-1.jpg',
   totalReviews: 2,
-};/**/
+}; /**/
 /*const reviews: CamperReview[] = [
   {
     id: 'cmniy1dvm0005yyoxj0j73di3',
@@ -128,6 +129,45 @@ import InfoCamper from '../CamperPage/InfoCamper/InfoCamper';
   ],
   totalReviews: 2,
 };/**/
+const campersImgItem = [
+  {
+    id: 'cmniy1dx0001zyyox38fzpg95',
+    camperId: 'cmniy1dx0001yyyoxyac2tiki',
+    thumb:
+      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-1.jpg',
+    original:
+      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-1.jpg',
+    order: 1,
+  },
+  {
+    id: 'cmniy1dx00020yyoxipn9qc25',
+    camperId: 'cmniy1dx0001yyyoxyac2tiki',
+    thumb:
+      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-2.jpg',
+    original:
+      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-2.jpg',
+    order: 2,
+  },
+  {
+    id: 'cmniy1dx00021yyoxidt6za4r',
+    camperId: 'cmniy1dx0001yyyoxyac2tiki',
+    thumb:
+      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-3.jpg',
+    original:
+      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-3.jpg',
+    order: 3,
+  },
+  {
+    id: 'cmniy1dx00022yyoxlsqr92ra',
+    camperId: 'cmniy1dx0001yyyoxyac2tiki',
+    thumb:
+      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-4.jpg',
+    original:
+      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-4.jpg',
+    order: 4,
+  },
+];
+/**/
 
 function Hero() {
   const handleClick = async () => {
@@ -159,11 +199,12 @@ function Hero() {
         </div>
         <Button text="View Now" onClick={handleClick} />
       </div>
-      {/* <Article {...tmpC} /> */}
+      {/* <Article camper={tmpC} /> */}
       {/* <FilterForm /> */}
       {/* <BookingForm /> */}
       {/* <ReviewsBlock reviews={reviews} /> */}
       {/* <InfoCamper camper={camper} /> */}
+      <GaleryCamper campersImgItem={campersImgItem} />
     </section>
   );
 }
