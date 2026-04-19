@@ -15,15 +15,18 @@ export const api = axios.create({ baseURL });
 
 export const getAllCampers = async ({
   page = 1,
-  per_page = 5,
+  perPage = 5,
   location = '',
   form = '',
   transmission = '',
   engine = '',
 }: GetAllCampersProps = {}): Promise<GetAllCampersResponse> => {
+  console.log(
+    `пришло в функцию: location=${location}|->form=${form}|->transmission=${transmission}|->engine=${engine}`,
+  );
   const objParams = {
     page,
-    per_page,
+    perPage,
     ...(location && { location }),
     ...(form && { form }),
     ...(transmission && { transmission }),

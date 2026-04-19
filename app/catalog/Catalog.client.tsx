@@ -3,13 +3,22 @@ import Article from '@/components/Article/Article';
 import css from './CatalogPage.module.css';
 import Button from '@/components/Button/Button';
 import { useInfiniteCampers } from '@/hooks/useInfiniteCampers';
+import { useFilterStore } from '@/store/useFilterStore';
+import { useShallow } from 'zustand/shallow';
 
 function CatalogClient() {
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useInfiniteCampers({});
-  const campers = data?.pages.flatMap(page => page.campers) || [];
+  const filters = useFilterStore(
+    useShallow(state => ({
+      location: state.location,
+      form: state.form,
+      transmission: state.transmission,
+      engine: state.engine,
+    })),
+  );
 
-  console.log('🚀 ~ CatalogClient ~ campers:', campers);
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfiniteCampers(filters);
+  const campers = data?.pages.flatMap(page => page.campers) || [];
 
   return (
     <>

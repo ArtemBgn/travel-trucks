@@ -1,6 +1,6 @@
 export interface GetAllCampersProps {
   page?: number;
-  per_page?: number;
+  perPage?: number;
   location?: string;
   form?: string;
   transmission?: string;

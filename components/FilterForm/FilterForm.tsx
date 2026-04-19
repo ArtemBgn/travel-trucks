@@ -1,52 +1,46 @@
-'use client'; //возможно убрать
+'use client';
 import { Field, Form, Formik } from 'formik';
 import css from './FilterForm.module.css';
-import { getFilters } from '@/lib/api/api';
-import { useEffect, useState } from 'react';
 import Button from '../Button/Button';
 import { IoClose, IoMapOutline } from 'react-icons/io5';
+import { useFilterStore } from '@/store/useFilterStore';
+import { useFilters } from '@/hooks/useFilters';
 
 interface InitialValuesProps {
   location: string;
-  forms: string;
-  transmissions: string;
-  engines: string;
+  form: string;
+  transmission: string;
+  engine: string;
 }
 
 function FilterForm() {
-  const [forms, setFormss] = useState<string[]>([]);
-  const [transmissions, setTransmissionss] = useState<string[]>([]);
-  const [engines, setEnginess] = useState<string[]>([]);
-  //   const { forms, transmissions, engines } = await getFilters();
-  useEffect(() => {
-    const fetchCampers = async () => {
-      try {
-        const { forms, transmissions, engines } = await getFilters();
-        setFormss(forms);
-        setTransmissionss(transmissions);
-        setEnginess(engines);
-      } catch (error) {
-        console.error('Ошибка при загрузке:', error);
-      }
-    };
+  const setFilters = useFilterStore(state => state.setFilters);
+  const resetFilters = useFilterStore(state => state.resetFilters);
 
-    fetchCampers();
-  }, []);
-  const handleSubmit = (data: InitialValuesProps) => {
-    console.log(data);
-  };
+  const { data: filterOptions, isLoading } = useFilters();
+
   const initialValuesF: InitialValuesProps = {
     location: '',
-    forms: '',
-    transmissions: '',
-    engines: '',
+    form: '',
+    transmission: '',
+    engine: '',
   };
+  const handleSubmit = (data: InitialValuesProps) => {
+    setFilters(data);
+  };
+  const handleReset = () => resetFilters();
+
+  if (isLoading || !filterOptions) return <p>Loading filters...</p>;
+
+  const { forms, transmissions, engines } = filterOptions;
+
   return (
     <Formik
       initialValues={initialValuesF}
       enableReinitialize
       // validationSchema={transactionSchema}
       onSubmit={handleSubmit}
+      onReset={handleReset}
     >
       <Form className={css['firstClass']}>
         <fieldset className={css['fieldset']}>
@@ -58,7 +52,6 @@ function FilterForm() {
               name="location"
               id="location"
               // value=""
-
               placeholder="City"
               className={css['location-input']}
             />
@@ -73,8 +66,8 @@ function FilterForm() {
                 <label key={item} className={css['legend-radio-name']}>
                   <Field
                     type="radio"
-                    name="forms"
-                    id="forms"
+                    name="form"
+                    id="form"
                     value={`${item}`}
                     className="visually-hidden"
                   />
@@ -95,8 +88,8 @@ function FilterForm() {
                 <label key={item} className={css['legend-radio-name']}>
                   <Field
                     type="radio"
-                    name="engines"
-                    id="engines"
+                    name="engine"
+                    id="engine"
                     value={`${item}`}
                     className="visually-hidden"
                   />
@@ -117,8 +110,8 @@ function FilterForm() {
                 <label key={item} className={css['legend-radio-name']}>
                   <Field
                     type="radio"
-                    name="transmissions"
-                    id="transmissions"
+                    name="transmission"
+                    id="transmission"
                     value={`${item}`}
                     className="visually-hidden"
                   />

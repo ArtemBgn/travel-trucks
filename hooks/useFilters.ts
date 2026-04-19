@@ -6,5 +6,6 @@ export const useFilters = () => {
   return useQuery<GetFiltersResponse>({
     queryKey: ['filters'],
     queryFn: getFilters,
+    staleTime: Infinity,
   });
 };
