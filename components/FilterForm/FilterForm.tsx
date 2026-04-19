@@ -5,6 +5,7 @@ import Button from '../Button/Button';
 import { IoClose, IoMapOutline } from 'react-icons/io5';
 import { useFilterStore } from '@/store/useFilterStore';
 import { useFilters } from '@/hooks/useFilters';
+import * as Yup from 'yup';
 
 interface InitialValuesProps {
   location: string;
@@ -12,6 +13,10 @@ interface InitialValuesProps {
   transmission: string;
   engine: string;
 }
+
+const filterSchema = Yup.object().shape({
+  location: Yup.string().max(30, 'City name is too long').trim(), // fixed to number 3
+});
 
 function FilterForm() {
   const setFilters = useFilterStore(state => state.setFilters);
@@ -38,106 +43,117 @@ function FilterForm() {
     <Formik
       initialValues={initialValuesF}
       enableReinitialize
-      // validationSchema={transactionSchema}
+      validationSchema={filterSchema}
       onSubmit={handleSubmit}
       onReset={handleReset}
     >
-      <Form className={css['firstClass']}>
-        <fieldset className={css['fieldset']}>
-          <legend className={css['legend-name']}>Location</legend>
-          <div className={css['location-for-blockicon']}>
-            <IoMapOutline className={css['location-map-icon']} />
-            <Field
-              type="text"
-              name="location"
-              id="location"
-              // value=""
-              placeholder="City"
-              className={css['location-input']}
+      {({ errors, touched }) => (
+        <Form className={css['firstClass']}>
+          <fieldset className={css['fieldset']}>
+            <legend className={css['legend-name']}>Location</legend>
+            <div className={css['location-for-blockicon']}>
+              <IoMapOutline
+                className={`${css['location-map-icon']} ${
+                  errors.location && touched.location ? css['icon-error'] : ''
+                }`}
+              />
+              <Field
+                type="text"
+                name="location"
+                id="location"
+                placeholder="City"
+                className={`${css['location-input']} ${
+                  errors.location && touched.location ? css['input-error'] : ''
+                }`}
+              />
+
+              {errors.location && touched.location && (
+                <span className={css['error-message']}>{errors.location}</span>
+              )}
+            </div>
+          </fieldset>
+          <h3 className={css['title-filters']}>Filters</h3>
+          <fieldset className={css['fieldset']}>
+            <legend className={css['legend-name']}>Camper form</legend>
+            <div className={css['radio-block']}>
+              {forms.map(item => {
+                return (
+                  <label key={item} className={css['legend-radio-name']}>
+                    <Field
+                      type="radio"
+                      name="form"
+                      id="form"
+                      value={`${item}`}
+                      className="visually-hidden"
+                    />
+                    <span className={css['borderGrey']}>
+                      <span className={css['inCircleColorMane']}></span>
+                    </span>
+                    {item.replaceAll('_', ' ')}
+                  </label>
+                );
+              })}
+            </div>
+          </fieldset>
+          <fieldset className={css['fieldset']}>
+            <legend className={css['legend-name']}>Engine</legend>
+            <div className={css['radio-block']}>
+              {engines.map(item => {
+                return (
+                  <label key={item} className={css['legend-radio-name']}>
+                    <Field
+                      type="radio"
+                      name="engine"
+                      id="engine"
+                      value={`${item}`}
+                      className="visually-hidden"
+                    />
+                    <span className={css['borderGrey']}>
+                      <span className={css['inCircleColorMane']}></span>
+                    </span>
+                    {item.replaceAll('_', ' ')}
+                  </label>
+                );
+              })}
+            </div>
+          </fieldset>
+          <fieldset className={css['fieldset']}>
+            <legend className={css['legend-name']}>Transmission</legend>
+            <div className={css['radio-block']}>
+              {transmissions.map(item => {
+                return (
+                  <label key={item} className={css['legend-radio-name']}>
+                    <Field
+                      type="radio"
+                      name="transmission"
+                      id="transmission"
+                      value={`${item}`}
+                      className="visually-hidden"
+                    />
+                    <span className={css['borderGrey']}>
+                      <span className={css['inCircleColorMane']}></span>
+                    </span>
+                    {item.replaceAll('_', ' ')}
+                  </label>
+                );
+              })}
+            </div>
+          </fieldset>
+          <div className={css['button-block']}>
+            <Button
+              text="Search"
+              type="submit"
+              className={css['button-search']}
+            />
+            <Button
+              icon={<IoClose className={css['size-icon-inbtn']} />}
+              text="Clear filters"
+              type="reset"
+              className={css['button-outh-color']}
             />
           </div>
-        </fieldset>
-        <h3 className={css['title-filters']}>Filters</h3>
-        <fieldset className={css['fieldset']}>
-          <legend className={css['legend-name']}>Camper form</legend>
-          <div className={css['radio-block']}>
-            {forms.map(item => {
-              return (
-                <label key={item} className={css['legend-radio-name']}>
-                  <Field
-                    type="radio"
-                    name="form"
-                    id="form"
-                    value={`${item}`}
-                    className="visually-hidden"
-                  />
-                  <span className={css['borderGrey']}>
-                    <span className={css['inCircleColorMane']}></span>
-                  </span>
-                  {item.replaceAll('_', ' ')}
-                </label>
-              );
-            })}
-          </div>
-        </fieldset>
-        <fieldset className={css['fieldset']}>
-          <legend className={css['legend-name']}>Engine</legend>
-          <div className={css['radio-block']}>
-            {engines.map(item => {
-              return (
-                <label key={item} className={css['legend-radio-name']}>
-                  <Field
-                    type="radio"
-                    name="engine"
-                    id="engine"
-                    value={`${item}`}
-                    className="visually-hidden"
-                  />
-                  <span className={css['borderGrey']}>
-                    <span className={css['inCircleColorMane']}></span>
-                  </span>
-                  {item.replaceAll('_', ' ')}
-                </label>
-              );
-            })}
-          </div>
-        </fieldset>
-        <fieldset className={css['fieldset']}>
-          <legend className={css['legend-name']}>Transmission</legend>
-          <div className={css['radio-block']}>
-            {transmissions.map(item => {
-              return (
-                <label key={item} className={css['legend-radio-name']}>
-                  <Field
-                    type="radio"
-                    name="transmission"
-                    id="transmission"
-                    value={`${item}`}
-                    className="visually-hidden"
-                  />
-                  <span className={css['borderGrey']}>
-                    <span className={css['inCircleColorMane']}></span>
-                  </span>
-                  {item.replaceAll('_', ' ')}
-                </label>
-              );
-            })}
-          </div>
-        </fieldset>
-        <div className={css['button-block']}>
-          <Button
-            text="Search"
-            type="submit"
-            className={css['button-search']}
-          />
-          <Button
-            icon={<IoClose className={css['size-icon-inbtn']} />}
-            text="Clear filters"
-            type="reset"
-            className={css['button-outh-color']}
-          />
-        </div>
-      </Form>
+        </Form>
+      )}
     </Formik>
   );
 }

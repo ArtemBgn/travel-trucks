@@ -23,6 +23,10 @@
   display: flex;
   align-items: center;
   width: 100%;
+  .input-wrapper {
+    /*-------------*/
+    width: 100%;
+  }
 }
 .location-map-icon {
   position: absolute;
@@ -39,12 +43,29 @@
   outline: none;
   background-color: var(--color-white);
 }
+.input-error {
+  border-color: var(--color-error);
+  color: var(--color-error);
+  &::placeholder {
+    color: var(--color-error);
+  }
+}
+/* .icon-error {
+  color: var(--color-error);
+} */
+.error-message {
+  text-align: center;
+  color: var(--color-error);
+}
 .location-for-blockicon:has(.location-input:not(:placeholder-shown)) {
   .location-input {
-    border: 1px solid var(--color-inputs);
+    border: 0px solid var(--color-inputs);
   }
   .location-map-icon {
     color: var(--color-main);
+  }
+  .icon-error {
+    color: var(--color-error);
   }
 }
 .title-filters {

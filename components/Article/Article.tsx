@@ -6,6 +6,7 @@ import { FaStar } from 'react-icons/fa';
 import { IoCarSharp, IoMapOutline } from 'react-icons/io5';
 import { RiGasStationFill } from 'react-icons/ri';
 import { TbManualGearbox } from 'react-icons/tb';
+import Link from 'next/link';
 
 interface ArticleProps {
   camper: Camper;
@@ -13,6 +14,7 @@ interface ArticleProps {
 
 function Article({ camper }: ArticleProps) {
   const {
+    id,
     name,
     price,
     rating,
@@ -69,7 +71,9 @@ function Article({ camper }: ArticleProps) {
             <span className={css['character-text']}>{form}</span>
           </li>
         </ul>
-        <Button text="Show more" className={css['btn-show-more']} />
+        <Link href={`/catalog/${id}`} target="_blank">
+          <Button text="Show more" className={css['btn-show-more']} />
+        </Link>
       </div>
     </div>
   );

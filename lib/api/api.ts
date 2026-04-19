@@ -21,9 +21,6 @@ export const getAllCampers = async ({
   transmission = '',
   engine = '',
 }: GetAllCampersProps = {}): Promise<GetAllCampersResponse> => {
-  console.log(
-    `пришло в функцию: location=${location}|->form=${form}|->transmission=${transmission}|->engine=${engine}`,
-  );
   const objParams = {
     page,
     perPage,

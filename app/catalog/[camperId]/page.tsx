@@ -1,195 +1,36 @@
-import GaleryCamper from '@/components/CamperPage/GaleryCamper/GaleryCamper';
 import css from './CamperPageId.module.css';
-import InfoCamper from '@/components/CamperPage/InfoCamper/InfoCamper';
-import ReviewsBlock from '@/components/CamperPage/ReviewsBlock/ReviewsBlock';
-import BookingForm from '@/components/CamperPage/BookingForm/BookingForm';
-import {
-  CamperReview,
-  GalleryItem,
-  GetCamperResponse,
-} from '@/lib/types/apiTypes';
 
-interface CamperPageProps {
-  campersImgItem: GalleryItem[];
-  camper: GetCamperResponse;
-  reviews: CamperReview[];
+/*********/
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from '@tanstack/react-query';
+import { getCamper, getCamperReviews, postCamperBooking } from '@/lib/api/api';
+import CamperPageIdClient from './CamperPageId.client';
+
+interface PageProps {
+  params: Promise<{ camperId: string }>;
 }
 
-/*const tmpC: Camper = {
-  id: 'cmniy1dvz000eyyoxgtlipyo4',
-  name: 'Britz 4 Berth',
-  price: 9000,
-  rating: 4.4,
-  location: 'Ukraine, Dnipro',
-  description:
-    "Experience luxury on the road with the Britz 4 Berth motorhome. Perfect for couples or small families, this alcove-style RV combines style, comfort, and functionality to provide an unforgettable travel experience. Whether you're exploring scenic landscapes or camping under the stars, the Britz 4 Berth offers a home-like atmosphere wherever your adventures take you.",
-  form: 'alcove',
-  length: '6.4m',
-  width: '2.65m',
-  height: '3.65m',
-  tank: '208l',
-  consumption: '30l/100km',
-  transmission: 'manual',
-  engine: 'petrol',
-  amenities: [
-    'ac',
-    'bathroom',
-    'kitchen',
-    'tv',
-    'radio',
-    'refrigerator',
-    'microwave',
-    'water',
-  ],
-  createdAt: '2026-04-03T13:32:46.607Z',
-  updatedAt: '2026-04-03T13:32:46.607Z',
-  coverImage:
-    'https://ac.goit.global/fullstack/career/campers/britz-4-berth/britz-4-berth-1.jpg',
-  totalReviews: 2,
-}; /**/
-const reviews1: CamperReview[] = [
-  {
-    id: 'cmniy1dvm0005yyoxj0j73di3',
-    camperId: 'cmniy1dvm0000yyoxsi4m4hns',
-    reviewer_name: 'Alice',
-    reviewer_rating: 5,
-    comment:
-      'Exceptional RV! The Road Bear C 23-25 provided a comfortable and enjoyable journey for my family. The amenities were fantastic, and the space was well-utilized. Highly recommended!',
-    createdAt: '2026-04-03T13:32:46.595Z',
-  },
-  {
-    id: 'cmniy1dvm0006yyox12oldnuv',
-    camperId: 'cmniy1dvm0000yyoxsi4m4hns',
-    reviewer_name: 'Bob',
-    reviewer_rating: 4,
-    comment:
-      'Great RV for a road trip. Spacious and well-equipped. Only minor issues with the bathroom setup, but overall a wonderful experience.',
-    createdAt: '2026-04-03T13:32:46.595Z',
-  },
-]; /**/
-const camper1: GetCamperResponse = {
-  id: 'cmniy1dvm0000yyoxsi4m4hns',
-  name: 'Road Bear C 23-25',
-  price: 10000,
-  rating: 4.5,
-  location: 'Ukraine, Kyiv',
-  description:
-    'Embadventures, promising comfort, style, and the freedom to explore at your own pace.',
-  form: 'alcove',
-  length: '7.3m',
-  width: '2.65m',
-  height: '3.65m',
-  tank: '208l',
-  consumption: '30l/100km',
-  transmission: 'automatic',
-  engine: 'diesel',
-  amenities: ['ac', 'bathroom', 'tv', 'radio', 'microwave', 'water'],
-  createdAt: '2026-04-03T13:32:46.595Z',
-  updatedAt: '2026-04-03T13:32:46.595Z',
-  gallery: [
-    {
-      id: 'cmniy1dvm0001yyoxrt0eot8b',
-      camperId: 'cmniy1dvm0000yyoxsi4m4hns',
-      thumb:
-        'https://ac.goit.global/fullstack/career/campers/road-bear-c-23-25/road-bear-c-23-25-1.jpg',
-      original:
-        'https://ac.goit.global/fullstack/career/campers/road-bear-c-23-25/road-bear-c-23-25-1.jpg',
-      order: 1,
-    },
-    {
-      id: 'cmniy1dvm0002yyoxg6qaw1hp',
-      camperId: 'cmniy1dvm0000yyoxsi4m4hns',
-      thumb:
-        'https://ac.goit.global/fullstack/career/campers/road-bear-c-23-25/road-bear-c-23-25-2.jpg',
-      original:
-        'https://ac.goit.global/fullstack/career/campers/road-bear-c-23-25/road-bear-c-23-25-2.jpg',
-      order: 2,
-    },
-    {
-      id: 'cmniy1dvm0003yyoxpeo12stt',
-      camperId: 'cmniy1dvm0000yyoxsi4m4hns',
-      thumb:
-        'https://ac.goit.global/fullstack/career/campers/road-bear-c-23-25/road-bear-c-23-25-3.jpg',
-      original:
-        'https://ac.goit.global/fullstack/career/campers/road-bear-c-23-25/road-bear-c-23-25-3.jpg',
-      order: 3,
-    },
-    {
-      id: 'cmniy1dvm0004yyoxeous6cfp',
-      camperId: 'cmniy1dvm0000yyoxsi4m4hns',
-      thumb:
-        'https://ac.goit.global/fullstack/career/campers/road-bear-c-23-25/road-bear-c-23-25-4.jpg',
-      original:
-        'https://ac.goit.global/fullstack/career/campers/road-bear-c-23-25/road-bear-c-23-25-4.jpg',
-      order: 4,
-    },
-  ],
-  totalReviews: 2,
-}; /**/
-const campersImgItem1 = [
-  {
-    id: 'cmniy1dx0001zyyox38fzpg95',
-    camperId: 'cmniy1dx0001yyyoxyac2tiki',
-    thumb:
-      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-1.jpg',
-    original:
-      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-1.jpg',
-    order: 1,
-  },
-  {
-    id: 'cmniy1dx00020yyoxipn9qc25',
-    camperId: 'cmniy1dx0001yyyoxyac2tiki',
-    thumb:
-      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-2.jpg',
-    original:
-      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-2.jpg',
-    order: 2,
-  },
-  {
-    id: 'cmniy1dx00021yyoxidt6za4r',
-    camperId: 'cmniy1dx0001yyyoxyac2tiki',
-    thumb:
-      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-3.jpg',
-    original:
-      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-3.jpg',
-    order: 3,
-  },
-  {
-    id: 'cmniy1dx00022yyoxlsqr92ra',
-    camperId: 'cmniy1dx0001yyyoxyac2tiki',
-    thumb:
-      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-4.jpg',
-    original:
-      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-4.jpg',
-    order: 4,
-  },
-];
-/**/
+async function CamperPageId({ params }: PageProps) {
+  const camperId = (await params).camperId;
+  const queryClient = new QueryClient();
 
-function CamperPageId({
-  campersImgItem = campersImgItem1,
-  camper = camper1,
-  reviews = reviews1,
-}: CamperPageProps) {
+  await queryClient.prefetchQuery({
+    queryKey: ['camper', camperId],
+    queryFn: () => getCamper(camperId),
+  });
+
+  await queryClient.prefetchQuery({
+    queryKey: ['camperReviews', camperId],
+    queryFn: () => getCamperReviews(camperId),
+  });
+
   return (
-    <div className={css['parent-camper-page']}>
-      <div className={css['location-gallery-infoblock']}>
-        <div className={css['for-element']}>
-          <GaleryCamper campersImgItem={campersImgItem} />
-        </div>
-        <div className={css['for-element']}>
-          <InfoCamper camper={camper} />
-        </div>
-      </div>
-      <div className={css['location-gallery-infoblock']}>
-        <div className={css['for-element']}>
-          <ReviewsBlock reviews={reviews} />
-        </div>
-        <div className={css['for-element']}>
-          <BookingForm />
-        </div>
-      </div>
-    </div>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <CamperPageIdClient camperId={camperId} />
+    </HydrationBoundary>
   );
 }
 

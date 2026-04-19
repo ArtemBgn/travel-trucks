@@ -18,7 +18,7 @@
 .title-block-text {
   color: var(--color-grey);
 }
-.сontact-block-info {
+.contact-block-info {
   width: 100%;
   margin-bottom: 24px;
   display: flex;
@@ -26,7 +26,11 @@
   justify-content: space-between;
   align-items: center;
   gap: 14px;
+  .input-wrapper {
+    width: 100%;
+  }
 }
+
 .input {
   width: 100%;
   padding: 18px;
@@ -37,6 +41,16 @@
 }
 .input:focus {
   border: 1px solid var(--color-grey);
+}
+.input-error {
+  border-color: var(--color-error);
+  color: var(--color-error);
+  &::placeholder {
+    color: var(--color-error);
+  }
+}
+.error-message {
+  color: var(--color-error);
 }
 .button-booking {
   width: 100%;
