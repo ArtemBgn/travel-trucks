@@ -4,20 +4,12 @@
   justify-content: center;
   gap: 10px;
   border-radius: 200px;
-  padding: 16px 60px;
-  border: none;
   cursor: pointer;
   min-width: 173px;
   min-height: 56px;
-  background-color: var(--color-grey-green);
-  color: var(--color-inputs);
   font-size: var(--font-size-regular);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-regular);
   letter-spacing: -0.01em;
-  transition: var(--transition-my);
-}
-
-.button:hover {
-  background-color: var(--color-green-hover);
+  transition: all var(--transition-my);
 }

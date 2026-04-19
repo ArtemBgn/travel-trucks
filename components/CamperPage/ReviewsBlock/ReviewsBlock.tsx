@@ -27,9 +27,9 @@ function ReviewsBlock({ reviews }: ReviewsBlockProps) {
                     <div className={css['reviewer_rating']}>
                       {[...Array(5)].map((_, index) => {
                         return index + 1 <= reviewer_rating ? (
-                          <FaStar className={css['aurum-star']} />
+                          <FaStar className={css['aurum-star']} key={index} />
                         ) : (
-                          <FaStar className={css['grey-star']} />
+                          <FaStar className={css['grey-star']} key={index} />
                         );
                       })}
                     </div>

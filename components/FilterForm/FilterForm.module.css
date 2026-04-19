@@ -94,11 +94,25 @@
   flex-direction: column;
   gap: 16px;
 }
+.button-search {
+  padding: 16px 60px;
+  border: none;
+  background-color: var(--color-grey-green);
+  color: var(--color-inputs);
+}
+.button-search:hover {
+  background-color: var(--color-green-hover);
+}
 .button-outh-color {
   background-color: var(--color-white);
   border: 1px solid var(--color-grey-light);
   padding: 16px 32px;
   color: var(--color-main);
+  .button-outh-color:hover {
+    border-color: var(--color-green-hover);
+    background-color: transparent;
+    color: var(--color-white);
+  }
 }
 .button-outh-color:hover {
   border-color: var(--color-green-hover);

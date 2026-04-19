@@ -1,3 +1,4 @@
+'use client';
 import { GalleryItem } from '@/lib/types/apiTypes';
 import { useState } from 'react';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
@@ -7,30 +8,17 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import css from './GaleryCamper.module.css';
+import Image from 'next/image';
 
 interface GaleryCamper {
   campersImgItem: GalleryItem[];
 }
 
-/*
-{
-    id: 'cmniy1dx0001zyyox38fzpg95',
-    camperId: 'cmniy1dx0001yyyoxyac2tiki',
-    thumb:
-      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-1.jpg',
-    original:
-      'https://ac.goit.global/fullstack/career/campers/kuga-camper/kuga-camper-1.jpg',
-    order: 1,
-  }
-/**/
-
 function GaleryCamper({ campersImgItem }: GaleryCamper) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
 
   return (
-    // <div className={css['gallery-block']}>
     <div className={css['gallery-container']}>
-      {/* Основной большой слайдер */}
       <Swiper
         spaceBetween={10}
         navigation={true}
@@ -43,12 +31,18 @@ function GaleryCamper({ campersImgItem }: GaleryCamper) {
       >
         {campersImgItem.map((img, index) => (
           <SwiperSlide key={`main-${index}`}>
-            <img src={img.original} alt={`Slide ${index}`} />
+            <Image
+              src={img.original}
+              alt={`Slide ${index}`}
+              width={638}
+              height={505}
+              //   fill
+              style={{ objectFit: 'cover' }}
+            />
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {/* Нижний слайдер с превью (Thumbs) */}
       <Swiper
         onSwiper={setThumbsSwiper}
         spaceBetween={32}
@@ -61,13 +55,18 @@ function GaleryCamper({ campersImgItem }: GaleryCamper) {
         {campersImgItem.map((img, index) => (
           <SwiperSlide key={`thumb-${index}`}>
             <div className={css['thumb-wrapper']}>
-              <img src={img.thumb} alt={`Thumb ${index}`} />
+              <Image
+                src={img.thumb}
+                alt={`Thumb ${index}`}
+                width={136}
+                height={144}
+                style={{ objectFit: 'cover' }}
+              />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
     </div>
-    // </div>
   );
 }
 

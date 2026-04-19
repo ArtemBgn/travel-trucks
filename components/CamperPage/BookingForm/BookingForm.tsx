@@ -1,3 +1,4 @@
+'use client';
 import { Field, Form, Formik } from 'formik';
 import css from './BookingForm.module.css';
 import Button from '@/components/Button/Button';
@@ -49,7 +50,7 @@ function BookingForm() {
               className={css['input']}
             />
           </div>
-          <Button text="Send" type="submit" className={css['btn-booking']} />
+          <Button text="Send" type="submit" className={css['button-booking']} />
         </Form>
       </Formik>
     </div>

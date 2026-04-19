@@ -132,7 +132,11 @@ function FilterForm() {
           </div>
         </fieldset>
         <div className={css['button-block']}>
-          <Button text="Search" type="submit" />
+          <Button
+            text="Search"
+            type="submit"
+            className={css['button-search']}
+          />
           <Button
             icon={<IoClose className={css['size-icon-inbtn']} />}
             text="Clear filters"

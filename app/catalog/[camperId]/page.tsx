@@ -1,22 +1,19 @@
-'use client'; //нужно ли?
-import css from './Hero.module.css';
-import Button from '../Button/Button';
+import GaleryCamper from '@/components/CamperPage/GaleryCamper/GaleryCamper';
+import css from './CamperPageId.module.css';
+import InfoCamper from '@/components/CamperPage/InfoCamper/InfoCamper';
+import ReviewsBlock from '@/components/CamperPage/ReviewsBlock/ReviewsBlock';
+import BookingForm from '@/components/CamperPage/BookingForm/BookingForm';
 import {
-  getAllCampers,
-  getCamper,
-  getCamperReviews,
-  getFilters,
-  postCamperBooking,
-} from '@/lib/api/api';
-// import GaleryCamper from '../CamperPage/GaleryCamper/GaleryCamper';
-// import InfoCamper from '../CamperPage/InfoCamper/InfoCamper';
-// import { GetCamperResponse } from '@/lib/types/apiTypes';
-import FilterForm from '../FilterForm/FilterForm';
-// import BookingForm from '../CamperPage/BookingForm/BookingForm';
-// import ReviewsBlock from '../CamperPage/ReviewsBlock/ReviewsBlock';
-// import { CamperReview } from '@/lib/types/apiTypes';
-// import Article from '../Article/Article';
-// import { Camper } from '@/lib/types/apiTypes';
+  CamperReview,
+  GalleryItem,
+  GetCamperResponse,
+} from '@/lib/types/apiTypes';
+
+interface CamperPageProps {
+  campersImgItem: GalleryItem[];
+  camper: GetCamperResponse;
+  reviews: CamperReview[];
+}
 
 /*const tmpC: Camper = {
   id: 'cmniy1dvz000eyyoxgtlipyo4',
@@ -50,7 +47,7 @@ import FilterForm from '../FilterForm/FilterForm';
     'https://ac.goit.global/fullstack/career/campers/britz-4-berth/britz-4-berth-1.jpg',
   totalReviews: 2,
 }; /**/
-/*const reviews: CamperReview[] = [
+const reviews1: CamperReview[] = [
   {
     id: 'cmniy1dvm0005yyoxj0j73di3',
     camperId: 'cmniy1dvm0000yyoxsi4m4hns',
@@ -69,8 +66,8 @@ import FilterForm from '../FilterForm/FilterForm';
       'Great RV for a road trip. Spacious and well-equipped. Only minor issues with the bathroom setup, but overall a wonderful experience.',
     createdAt: '2026-04-03T13:32:46.595Z',
   },
-];/**/
-/*const camper: GetCamperResponse = {
+]; /**/
+const camper1: GetCamperResponse = {
   id: 'cmniy1dvm0000yyoxsi4m4hns',
   name: 'Road Bear C 23-25',
   price: 10000,
@@ -128,8 +125,8 @@ import FilterForm from '../FilterForm/FilterForm';
     },
   ],
   totalReviews: 2,
-};/**/
-/*const campersImgItem = [
+}; /**/
+const campersImgItem1 = [
   {
     id: 'cmniy1dx0001zyyox38fzpg95',
     camperId: 'cmniy1dx0001yyyoxyac2tiki',
@@ -169,44 +166,31 @@ import FilterForm from '../FilterForm/FilterForm';
 ];
 /**/
 
-function Hero() {
-  const handleClick = async () => {
-    const resGetAllCampers = await getAllCampers();
-    console.log('🚀resGetAllCampers:', resGetAllCampers);
-    const resGetFilters = await getFilters();
-    console.log('🚀resGetFilters:', resGetFilters);
-    const resGetCamper = await getCamper('cmniy1dvu0007yyox23jbyl9k');
-    console.log('🚀resGetCamper:', resGetCamper);
-    const resGetCamperReviews = await getCamperReviews(
-      'cmniy1dvu0007yyox23jbyl9k',
-    );
-    console.log('🚀resGetCamperReviews:', resGetCamperReviews);
-    const resPostCamperBooking = await postCamperBooking({
-      camperId: 'cmniy1dvu0007yyox23jbyl9k',
-      name: 'Artem',
-      email: 'string.art@gmail.com',
-    });
-    console.log('🚀resPostCamperBooking:', resPostCamperBooking);
-  };
+function CamperPageId({
+  campersImgItem = campersImgItem1,
+  camper = camper1,
+  reviews = reviews1,
+}: CamperPageProps) {
   return (
-    <section className={css['hero']}>
-      <div className={`container ${css['hero-container']}`}>
-        <div className={css['title-container']}>
-          <h1 className={css['hero-title']}>Campers of your dreams</h1>
-          <h2 className={css['hero-massage']}>
-            You can find everything you want in our catalog
-          </h2>
+    <div className={css['parent-camper-page']}>
+      <div className={css['location-gallery-infoblock']}>
+        <div className={css['for-element']}>
+          <GaleryCamper campersImgItem={campersImgItem} />
         </div>
-        <Button text="View Now" onClick={handleClick} />
+        <div className={css['for-element']}>
+          <InfoCamper camper={camper} />
+        </div>
       </div>
-      {/* <Article camper={tmpC} /> */}
-      <FilterForm />
-      {/* <BookingForm /> */}
-      {/* <ReviewsBlock reviews={reviews} /> */}
-      {/* <InfoCamper camper={camper} /> */}
-      {/* <GaleryCamper campersImgItem={campersImgItem} /> */}
-    </section>
+      <div className={css['location-gallery-infoblock']}>
+        <div className={css['for-element']}>
+          <ReviewsBlock reviews={reviews} />
+        </div>
+        <div className={css['for-element']}>
+          <BookingForm />
+        </div>
+      </div>
+    </div>
   );
 }
 
-export default Hero;
+export default CamperPageId;

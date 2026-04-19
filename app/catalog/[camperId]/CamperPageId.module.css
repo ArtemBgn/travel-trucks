@@ -1,0 +1,12 @@
+.parent-camper-page {
+  padding-top: 64px;
+}
+.location-gallery-infoblock {
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  margin-bottom: 88px;
+}
+.for-element {
+  width: calc((100% - 24px) / 2);
+}
