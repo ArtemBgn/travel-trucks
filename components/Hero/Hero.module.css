@@ -22,3 +22,12 @@
 .hero-massage {
   color: var(--color-inputs);
 }
+.button-rout {
+  padding: 16px 60px;
+  border: none;
+  background-color: var(--color-grey-green);
+  color: var(--color-inputs);
+}
+.button-rout:hover {
+  background-color: var(--color-green-hover);
+}

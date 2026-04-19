@@ -16,12 +16,21 @@ export const api = axios.create({ baseURL });
 export const getAllCampers = async ({
   page = 1,
   per_page = 5,
+  location = '',
+  form = '',
+  transmission = '',
+  engine = '',
 }: GetAllCampersProps = {}): Promise<GetAllCampersResponse> => {
+  const objParams = {
+    page,
+    per_page,
+    ...(location && { location }),
+    ...(form && { form }),
+    ...(transmission && { transmission }),
+    ...(engine && { engine }),
+  };
   const { data } = await api.get<GetAllCampersResponse>('/campers', {
-    params: {
-      page,
-      per_page,
-    },
+    params: objParams,
   });
   return data;
 };
