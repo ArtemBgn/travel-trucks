@@ -21,7 +21,7 @@ function CamperPage({ campersImgItem, camper, reviews }: CamperPageProps) {
       <GaleryCamper campersImgItem={campersImgItem} />
       <InfoCamper camper={camper} />
       <ReviewsBlock reviews={reviews} />
-      <BookingForm />
+      <BookingForm camperId={camper.id} />
     </div>
   );
 }
