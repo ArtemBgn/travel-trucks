@@ -1,8 +1,8 @@
-'use client';
+// 'use client';
 import css from './Hero.module.css';
 import Button from '../Button/Button';
-import { useRouter } from 'next/navigation';
-// import { useRouter } from 'next/router';
+import Link from 'next/link';
+// import { useRouter } from 'next/navigation';
 
 function Hero() {
   /*const handleClick = async () => {
@@ -24,7 +24,7 @@ function Hero() {
     console.log('🚀resPostCamperBooking:', resPostCamperBooking);
   };/**/
 
-  const rout = useRouter();
+  // const rout = useRouter();
 
   return (
     <section className={css['hero']}>
@@ -35,15 +35,10 @@ function Hero() {
             You can find everything you want in our catalog
           </h2>
         </div>
-        <Button
-          text="View Now"
-          onClick={() => {
-            rout.push('/catalog');
-          }}
-          className={css['button-rout']}
-        />
+        <Link href={'/catalog'}>
+          <Button text="View Now" className={css['button-rout']} />
+        </Link>
       </div>
-      {/* rout.push('/catalog') */}
     </section>
   );
 }

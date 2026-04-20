@@ -3,12 +3,6 @@ import GaleryCamper from '@/components/CamperPage/GaleryCamper/GaleryCamper';
 import InfoCamper from '@/components/CamperPage/InfoCamper/InfoCamper';
 import ReviewsBlock from '@/components/CamperPage/ReviewsBlock/ReviewsBlock';
 import BookingForm from '@/components/CamperPage/BookingForm/BookingForm';
-import {
-  CamperReview,
-  GalleryItem,
-  GetCamperResponse,
-} from '@/lib/types/apiTypes';
-import { getCamper, getCamperReviews, postCamperBooking } from '@/lib/api/api';
 
 import css from './CamperPageId.module.css';
 import { useCamper } from '@/hooks/useCamper';
