@@ -3,7 +3,6 @@ import {
   GalleryItem,
   GetCamperResponse,
 } from '@/lib/types/apiTypes';
-import css from './CamperPage.module.css';
 import GaleryCamper from './GaleryCamper/GaleryCamper';
 import InfoCamper from './InfoCamper/InfoCamper';
 import ReviewsBlock from './ReviewsBlock/ReviewsBlock';

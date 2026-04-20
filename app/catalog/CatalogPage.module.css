@@ -4,7 +4,10 @@
   gap: 65px;
 }
 .place-for-form {
+  position: sticky;
+  top: 32px;
   width: 360px;
+  height: fit-content;
 }
 .place-array-articlies {
   width: 888px;
