@@ -24,7 +24,6 @@
   align-items: center;
   width: 100%;
   .input-wrapper {
-    /*-------------*/
     width: 100%;
   }
 }
@@ -34,6 +33,7 @@
   left: 20px;
   color: var(--color-grey);
   pointer-events: none;
+  transition: all var(--transition-my);
 }
 .location-input {
   width: 100%;
@@ -42,6 +42,7 @@
   border: 0px solid var(--color-white);
   outline: none;
   background-color: var(--color-white);
+  transition: all var(--transition-my);
 }
 .input-error {
   border-color: var(--color-error);
@@ -50,9 +51,7 @@
     color: var(--color-error);
   }
 }
-/* .icon-error {
-  color: var(--color-error);
-} */
+
 .error-message {
   text-align: center;
   color: var(--color-error);
@@ -96,12 +95,12 @@
   display: none;
   height: 14px;
   width: 14px;
-  background-color: var(--color-main); /**/
+  background-color: var(--color-grey); /**/
   border-radius: 50%;
 }
 .legend-radio-name:has(input:checked) {
   .borderGrey {
-    border: 2px solid var(--color-main);
+    border: 2px solid var(--color-grey);
   }
 }
 .legend-radio-name:has(input:checked) {

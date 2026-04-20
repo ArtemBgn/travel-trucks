@@ -1,9 +1,7 @@
 .gallery-container {
   width: 100%;
-  /* max-width: 638px; Настройте под свой макет */
   margin: 0 auto;
 }
-/* Стили большого изображения */
 .main-swiper {
   --swiper-navigation-color: var(--color-grey-light);
   width: 100%;
@@ -18,8 +16,7 @@
   display: block;
   object-fit: cover;
 }
-/*----------------------------------------*/
-/* Стили превью */
+
 :global(.GaleryCamper-module__EcEMEq__thumbs-swiper .swiper-slide) {
   cursor: pointer;
   opacity: 0.7;
@@ -49,8 +46,6 @@
 
 .thumbs-swiper img {
   width: 100%;
-  /* height: auto; */
-  /* aspect-ratio: 1 / 1; */
   display: block;
   object-fit: cover;
 }

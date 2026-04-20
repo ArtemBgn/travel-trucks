@@ -1,7 +1,7 @@
 .block-for-reviews {
   width: 100%;
   max-width: 623px;
-  background-color: var(--color-white); /*delete*/
+  background-color: var(--color-white);
   margin-bottom: 24px;
 }
 .title-name-block {

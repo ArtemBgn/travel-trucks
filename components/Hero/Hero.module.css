@@ -2,14 +2,13 @@
   padding: 192px 0;
   background-color: var(--color-inputs);
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.2)), url(../../public/hero-image.jpg);
+    linear-gradient(rgba(0, 0, 0, 0.2)), url(/travel-trucks-camper-rental.jpg);
   background-repeat: no-repeat;
   background-position: center;
+  max-width: 1788px;
+  margin: 0 auto;
   background-size: cover;
   height: 696px;
-}
-.hero-container {
-  /* padding-top: 192px; */
 }
 .title-container {
   margin-right: auto;
