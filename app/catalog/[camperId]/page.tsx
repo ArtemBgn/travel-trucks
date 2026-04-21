@@ -27,7 +27,7 @@ export async function generateMetadata({
     };
   }
   return {
-    title: `${camper} | TravelTrucks Rental`,
+    title: `${camper.name} | TravelTrucks Rental`,
     description: `Rent ${camper.name}. ${camper.description.slice(0, 150)}... Book this fully equipped campervan for your next road trip.`,
     openGraph: {
       title: `Rent ${camper.name} - Modern Campervan`,
