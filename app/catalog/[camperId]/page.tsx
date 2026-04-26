@@ -34,7 +34,7 @@ export async function generateMetadata({
       description: `Check out reviews and features of ${camper.name}. Your perfect adventure starts here.`,
       images: [
         {
-          url: camper?.gallery[0]?.original || '/default-camper-og.jpg',
+          url: camper?.gallery[0]?.original || '',
           width: 1200,
           height: 630,
           alt: camper.name,
