@@ -2,6 +2,7 @@ import { GetCamperResponse } from '@/lib/types/apiTypes';
 import css from './InfoCamper.module.css';
 import { FaStar } from 'react-icons/fa';
 import { IoMapOutline } from 'react-icons/io5';
+import normal from './normal';
 
 interface InfoCamperProps {
   camper: GetCamperResponse;
@@ -47,7 +48,7 @@ function InfoCamper({ camper }: InfoCamperProps) {
               <span className={css['title-data-text']}>{camper.location}</span>
             </p>
           </div>
-          <strong className={css['title-price']}>€{camper.price}</strong>
+          <strong className={css['title-price']}>€ {camper.price}</strong>
         </div>
         <p className={css['str-description']}>{camper.description}</p>
       </div>
@@ -68,23 +69,33 @@ function InfoCamper({ camper }: InfoCamperProps) {
         <dl className={css['characteristics-block']}>
           <div className={css['characteristic-str']}>
             <dt className={css['characteristic-key']}>Form</dt>
-            <dd className={css['characteristic-value']}>{camper.form}</dd>
+            <dd className={css['characteristic-value']}>
+              {camper.form.replaceAll('_', ' ')}
+            </dd>
           </div>
           <div className={css['characteristic-str']}>
             <dt className={css['characteristic-key']}>Length</dt>
-            <dd className={css['characteristic-value']}>{camper.length}</dd>
+            <dd className={css['characteristic-value']}>
+              {normal(camper.length)}
+            </dd>
           </div>
           <div className={css['characteristic-str']}>
             <dt className={css['characteristic-key']}>Width</dt>
-            <dd className={css['characteristic-value']}>{camper.width}</dd>
+            <dd className={css['characteristic-value']}>
+              {normal(camper.width)}
+            </dd>
           </div>
           <div className={css['characteristic-str']}>
             <dt className={css['characteristic-key']}>Height</dt>
-            <dd className={css['characteristic-value']}>{camper.height}</dd>
+            <dd className={css['characteristic-value']}>
+              {normal(camper.height)}
+            </dd>
           </div>
           <div className={css['characteristic-str']}>
             <dt className={css['characteristic-key']}>Tank</dt>
-            <dd className={css['characteristic-value']}>{camper.tank}</dd>
+            <dd className={css['characteristic-value']}>
+              {normal(camper.tank)}
+            </dd>
           </div>
           <div className={css['characteristic-str']}>
             <dt className={css['characteristic-key']}>Consumption</dt>

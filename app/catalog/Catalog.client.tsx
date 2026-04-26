@@ -6,6 +6,7 @@ import Button from '@/components/Button/Button';
 import { useInfiniteCampers } from '@/hooks/useInfiniteCampers';
 import { useFilterStore } from '@/store/useFilterStore';
 import { useShallow } from 'zustand/shallow';
+import Loader from '@/components/Loader/Loader';
 
 function CatalogClient() {
   const filters = useFilterStore(
@@ -17,11 +18,11 @@ function CatalogClient() {
     })),
   );
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useInfiniteCampers(filters);
   const campers = data?.pages.flatMap(page => page.campers) || [];
 
-  const listRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     if (campers.length > 4 && !isFetchingNextPage) {
@@ -37,11 +38,23 @@ function CatalogClient() {
 
   return (
     <>
-      <div ref={listRef} className={css['list-articlies']}>
+      {status === 'pending' && <Loader />}
+      <ul ref={listRef} className={css['list-articlies']}>
         {campers.map(camper => {
-          return <Article key={camper.id} camper={camper} />;
+          return (
+            <li key={camper.id}>
+              <Article camper={camper} />
+            </li>
+          );
         })}
-      </div>
+      </ul>
+      {campers.length === 0 && status !== 'pending' && (
+        <p>
+          Sorry, no suitable campsites were found! Try changing your search
+          criteria...
+        </p>
+      )}
+
       {hasNextPage && (
         <Button
           text={isFetchingNextPage ? 'Loading...' : 'Load more'}

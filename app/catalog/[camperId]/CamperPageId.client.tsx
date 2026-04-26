@@ -17,9 +17,6 @@ function CamperPageIdClient({ camperId }: CamperPageIdClientProps) {
   const { data: reviews } = useCamperReviews(camperId);
   if (isLoading || !camper || !reviews) return <div>Loading...</div>;
 
-  // const dataHook = useCamperReviews(camperId);
-  // dataHook.data.
-
   return (
     <div className={css['parent-camper-page']}>
       <div className={css['location-gallery-infoblock']}>

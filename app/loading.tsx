@@ -1,17 +1,7 @@
-import { TailSpin } from 'react-loader-spinner';
+import Loader from '@/components/Loader/Loader';
 
-function loader() {
-  return (
-    <div className='box-loader'>
-      <TailSpin
-        height="75"
-        width="75"
-        color="var(--color-grey-green)"
-        ariaLabel="tail-spin-loading"
-        visible={true}
-      />
-    </div>
-  );
+function loading() {
+  return <Loader />;
 }
 
-export default loader;
+export default loading;

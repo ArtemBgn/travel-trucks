@@ -68,7 +68,9 @@ function Article({ camper }: ArticleProps) {
           </li>
           <li className={css['character-ciclyn']}>
             <IoCarSharp className={css['character-icon']} />
-            <span className={css['character-text']}>{form}</span>
+            <span className={css['character-text']}>
+              {form.replaceAll('_', ' ')}
+            </span>
           </li>
         </ul>
         <Link href={`/catalog/${id}`} target="_blank">

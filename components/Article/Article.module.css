@@ -35,6 +35,8 @@
 .title-name {
 }
 .title-price {
+  font-size: var(--font-size-bold);
+  font-weight: var(--font-weight-bold);
 }
 .header-title-data {
   display: flex;
